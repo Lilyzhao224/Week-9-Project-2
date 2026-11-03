@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Drifting Bottle</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Mono:wght@300;400&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Ocean -->
+  <video class="ocean-video" autoplay muted loop playsinline>
+    <source src="assets/ocean.mp4" type="video/mp4">
+  </video>
+
+  <div class="ocean-overlay"></div>
+
+
+  <!-- Lights -->
+  <div id="lights"></div>
+
+
+  <!-- Top -->
+  <header class="topbar">
+
+    <div class="brand">
+      DRIFTING BOTTLE
+    </div>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      OCEAN LIVE
+    </div>
+
+  </header>
+
+
+  <!-- Main -->
+  <main class="hero">
+
+    <h1>
+      Leave a thought.<br>
+      Catch a light.
+    </h1>
+
+    <div class="actions">
+
+      <button id="writeButton" class="main-button white-button">
+        WRITE A BOTTLE
+      </button>
+
+      <button id="catchButton" class="main-button glass-button">
+        CATCH A LIGHT
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <!-- Bottom -->
+  <div class="bottom-text">
+    Anonymous messages drifting across the sea.
+  </div>
+
+
+  <!-- Write popup -->
+  <div id="writeBox" class="popup">
+
+    <div class="popup-card">
+
+      <button id="closeWrite" class="close-button">
+        ×
+      </button>
+
+      <p class="popup-title">
+        WRITE A BOTTLE
+      </p>
+
+      <textarea
+        id="messageInput"
+        maxlength="280"
+        placeholder="Write something and let it drift..."
+      ></textarea>
+
+      <button id="sendButton" class="send-button">
+        THROW INTO THE OCEAN
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Catch popup -->
+  <div id="catchBox" class="popup">
+
+    <div class="popup-card">
+
+      <button id="closeCatch" class="close-button">
+        ×
+      </button>
+
+      <p class="popup-title">
+        A LIGHT FOUND YOU
+      </p>
+
+      <h2 id="receivedMessage"></h2>
+
+
+      <!-- bottom row -->
+      <div class="message-info">
+
+        <span id="receivedTime"></span>
+
+        <button id="anotherButton" class="text-button">
+          CATCH ANOTHER
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+
+</body>
+
+</html>

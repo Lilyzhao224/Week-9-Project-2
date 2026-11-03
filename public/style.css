@@ -1,0 +1,521 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  margin: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #082c3a;
+
+  color: white;
+}
+
+
+/* --------------------
+   OCEAN
+-------------------- */
+
+.ocean-video {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+
+  filter:
+    brightness(0.82)
+    saturate(0.85);
+}
+
+
+.ocean-overlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 18, 28, 0.12),
+      rgba(0, 18, 28, 0.02),
+      rgba(0, 18, 28, 0.32)
+    );
+}
+
+
+/* --------------------
+   TOP
+-------------------- */
+
+.topbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  z-index: 10;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 28px 38px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.18em;
+}
+
+
+.status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: rgba(255,255,255,0.58);
+}
+
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 20px lightblue;
+}
+
+
+/* --------------------
+   MAIN
+-------------------- */
+
+.hero {
+  position: relative;
+
+  z-index: 5;
+
+  height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 0 30px;
+}
+
+
+h1 {
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(52px, 6.6vw, 94px);
+
+  line-height: 1.04;
+
+  font-weight: 300;
+
+  letter-spacing: -0.015em;
+
+  text-shadow:
+    0 3px 25px rgba(0,0,0,0.18);
+}
+
+
+/* --------------------
+   BUTTONS
+-------------------- */
+
+.actions {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 40px;
+}
+
+
+.main-button {
+  height: 44px;
+
+  padding: 0 24px;
+
+  border-radius: 999px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.white-button {
+  border: 1px solid white;
+
+  background: rgba(255,255,255,0.92);
+
+  color: #0c3341;
+}
+
+
+.glass-button {
+  border: 1px solid rgba(255,255,255,0.38);
+
+  background: rgba(4,26,37,0.12);
+
+  color: white;
+
+  backdrop-filter: blur(8px);
+}
+
+
+.main-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* --------------------
+   BOTTOM TEXT
+-------------------- */
+
+.bottom-text {
+  position: fixed;
+
+  left: 50%;
+  bottom: 27px;
+
+  z-index: 6;
+
+  transform: translateX(-50%);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.08em;
+
+  color: rgba(255,255,255,0.48);
+
+  white-space: nowrap;
+}
+
+
+/* --------------------
+   POPUP
+-------------------- */
+
+.popup {
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 20;
+
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,15,22,0.25);
+
+  backdrop-filter: blur(8px);
+}
+
+
+.popup-card {
+  position: relative;
+
+  width: 560px;
+
+  max-width: calc(100% - 40px);
+
+  padding: 36px;
+
+  border:
+    1px solid rgba(255,255,255,0.22);
+
+  background:
+    rgba(4,25,35,0.68);
+
+  backdrop-filter: blur(24px);
+}
+
+
+.popup-title {
+  margin: 0 0 24px;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.16em;
+
+  color:
+    rgba(255,255,255,0.58);
+}
+
+
+/* --------------------
+   CLOSE BUTTON
+-------------------- */
+
+.close-button {
+  position: absolute;
+
+  top: 12px;
+  right: 16px;
+
+  border: none;
+
+  background: transparent;
+
+  color:
+    rgba(255,255,255,0.65);
+
+  font-size: 22px;
+
+  cursor: pointer;
+}
+
+
+/* --------------------
+   WRITE MESSAGE
+-------------------- */
+
+textarea {
+  width: 100%;
+  height: 180px;
+
+  resize: none;
+
+  border: none;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,0.25);
+
+  outline: none;
+
+  background: transparent;
+
+  color: white;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 30px;
+
+  line-height: 1.3;
+}
+
+
+textarea::placeholder {
+  color:
+    rgba(255,255,255,0.25);
+}
+
+
+.send-button {
+  width: 100%;
+
+  height: 46px;
+
+  margin-top: 25px;
+
+  border: 1px solid white;
+
+  background:
+    rgba(255,255,255,0.92);
+
+  color: #0c3341;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+}
+
+
+/* --------------------
+   RECEIVED MESSAGE
+-------------------- */
+
+#receivedMessage {
+  min-height: 140px;
+
+  margin:
+    10px
+    0
+    25px;
+
+  display: flex;
+
+  align-items: center;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 38px;
+
+  line-height: 1.2;
+
+  font-weight: 300;
+}
+
+
+/* --------------------
+   MESSAGE INFO
+-------------------- */
+
+.message-info {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.08em;
+
+  color:
+    rgba(255,255,255,0.45);
+}
+
+
+#receivedTime {
+  color:
+    rgba(255,255,255,0.45);
+}
+
+
+.text-button {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color:
+    rgba(255,255,255,0.7);
+
+  font-family:
+    "DM Mono",
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+}
+
+
+.text-button:hover {
+  color: white;
+}
+
+
+/* --------------------
+   LIGHTS
+-------------------- */
+
+.light {
+  position: fixed;
+
+  z-index: 3;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  box-shadow:
+    0 0 8px
+    rgba(255,255,255,0.9),
+
+    0 0 22px
+    rgba(190,240,255,0.7);
+
+  animation:
+    glow
+    3s
+    infinite
+    ease-in-out;
+}
+
+
+@keyframes glow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.95;
+  }
+
+}
